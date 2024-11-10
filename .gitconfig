@@ -1,0 +1,13 @@
+[user]
+  name = "mohamed salah"
+  email = "ms.mhmdsalah@gmail.com"
+
+[alias]
+  co = checout
+  br = branch
+  cm = commit -m
+  st = status
+
+[color] 
+  br = auto
+  cm = red

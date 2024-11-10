@@ -23,18 +23,14 @@ const ShowsScreen = () => {
   const error = useSelector((state) => state.shows.error);
   const dispatch = useDispatch();
   const allShowsData = useSelector(selectAllShows);
-  console.log(allShowsData)
-
+  const highRatedShowsData = useSelector(selectSortedHighRatedShows);
+  const latestPremieredShowsData = useSelector(selectSortedNewShows);
 
   useEffect(() => {
     dispatch(fetchAllShows());
   }, [dispatch]);
 
-  useEffect(()=>{
-    scrollToTop()
-  },[])
-
-
+  useEffect(() => scrollToTop(), []);
 
   if (isLoading) {
     return <Spinner />;
@@ -46,9 +42,33 @@ const ShowsScreen = () => {
 
   return (
     <div className="pg-shows">
-      {
-        allShowsData?.length>0 && <ShowsList showsData={allShowsData} showsTitle = {"All Shows"} />
-      }
+      {highRatedShowsData?.length > 0 && (
+        <ShowsBanner
+          showData={highRatedShowsData[Math.floor(Math.random() * 10)]}
+        />
+      )}
+
+      {highRatedShowsData?.length > 0 && (
+        <ShowsSlider
+          sliderType={HIGH_RATED_SHOWS}
+          sliderTitle={"All Time Popular Shows"}
+          showsData={highRatedShowsData}
+        />
+      )}
+
+      {latestPremieredShowsData?.length > 0 && (
+        <ShowsSlider
+          sliderType={NEW_SHOWS}
+          sliderTitle={"New Shows to Watch"}
+          showsData={latestPremieredShowsData}
+        />
+      )}
+
+      {allShowsData?.length > 0 && (
+        <ShowsList showsData={allShowsData} showsTitle={"All Shows"} />
+      )}
+
+      <FreeTrial />
     </div>
   );
 };
