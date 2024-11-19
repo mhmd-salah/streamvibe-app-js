@@ -12,9 +12,9 @@ const sortShowsByType = (type) => {
         (a, b) => new Date(b.premiered) - new Date(a.premiered)
       );
     }
-    return shows;
+    return shows
   });
 };
 
-export const selectSortedHigRatingShows = sortShowsByType(HIGH_RATED_SHOWS);
+export const selectSortedHighRatedShows = sortShowsByType(HIGH_RATED_SHOWS);
 export const selectSortedNewShows = sortShowsByType(NEW_SHOWS);

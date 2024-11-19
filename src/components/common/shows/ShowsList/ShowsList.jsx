@@ -2,7 +2,7 @@ import PropTypes from "prop-types";
 import { PaginationWrapper, ShowsListWrapper } from "./ShowsList.styles";
 import SectionTitle from "../../SectionTitle/SectionTitle";
 import { Container } from "../../../../styles/global/default";
-import { useState } from "react";
+import { useState } from "react"; 
 import ShowsItem from "../ShowsItem/ShowsItem";
 import { DEFAULT_SHOWS } from "../../../../constant/showsConstants";
 import { Icons } from "../../../../assets/icons";
@@ -16,23 +16,23 @@ const ShowsList = ({ showsData, showsTitle }) => {
   const currentShows = showsData.slice(indexOfFirstShow, indexOfLastShow);
   const totalPages = Math.ceil(showsData.length / showsPerPage);
 
-  const handleNextPage = ()=>{
-    if(currentPage < Math.ceil(showsData.length / showsPerPage)){
+  const handleNextPage = () => {
+    if (currentPage < Math.ceil(showsData.length / showsPerPage)) {
       setCurrentPage(currentPage + 1);
     }
-  }
+  };
 
-  const handlePrevPage = ()=>{
-    if(currentPage>1){
+  const handlePrevPage = () => {
+    if (currentPage > 1) {
       setCurrentPage(currentPage - 1);
     }
-  }
+  };
 
-  const handleNumberPage= (pageNum)=>{
-    if(pageNum){
+  const handleNumberPage = (pageNum) => {
+    if (pageNum) {
       setCurrentPage(pageNum);
     }
-  }
+  };
 
   return (
     <ShowsListWrapper>
@@ -57,9 +57,10 @@ const ShowsList = ({ showsData, showsTitle }) => {
               return (
                 <li key={index}>
                   <button
-                    className={`paginate-btn paginate-num text-white text-lg font-medium ${(tempPageNo ===
-                      currentPage ? "active" : "")}`}
-                      onClick={()=>handleNumberPage(tempPageNo)}
+                    className={`paginate-btn paginate-num text-white text-lg font-medium ${
+                      tempPageNo === currentPage ? "active" : ""
+                    }`}
+                    onClick={() => handleNumberPage(tempPageNo)}
                   >
                     {tempPageNo}
                   </button>

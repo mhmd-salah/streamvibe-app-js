@@ -24,6 +24,7 @@ const ShowsScreen = () => {
   const dispatch = useDispatch();
   const allShowsData = useSelector(selectAllShows);
   const highRatedShowsData = useSelector(selectSortedHighRatedShows);
+  console.log(highRatedShowsData);
   const latestPremieredShowsData = useSelector(selectSortedNewShows);
 
   useEffect(() => {
@@ -44,23 +45,7 @@ const ShowsScreen = () => {
     <div className="pg-shows">
       {highRatedShowsData?.length > 0 && (
         <ShowsBanner
-          showData={highRatedShowsData[Math.floor(Math.random() * 10)]}
-        />
-      )}
-
-      {highRatedShowsData?.length > 0 && (
-        <ShowsSlider
-          sliderType={HIGH_RATED_SHOWS}
-          sliderTitle={"All Time Popular Shows"}
-          showsData={highRatedShowsData}
-        />
-      )}
-
-      {latestPremieredShowsData?.length > 0 && (
-        <ShowsSlider
-          sliderType={NEW_SHOWS}
-          sliderTitle={"New Shows to Watch"}
-          showsData={latestPremieredShowsData}
+          showsData={highRatedShowsData[Math.floor(Math.random() * 10)]}
         />
       )}
 
